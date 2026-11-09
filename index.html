@@ -1,63 +1,157 @@
+
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#173b35"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg" type="image/svg+xml">
-<title>UKPSC MASTER</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#173b35">
+<title>UKPSC MASTER 2.0</title>
 <style>
-:root{--green:#173b35;--green2:#285348;--bg:#f4f7f5;--card:#fff;--ink:#17231f;--muted:#64736d;--line:#e1e9e4;--accent:#dff2e6;--red:#a93636}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:84px}
-header{background:var(--green);color:white;padding:22px 18px 20px;border-radius:0 0 22px 22px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:.3px}.mount{font-size:28px}.tag{color:#c9e1d4;font-size:11px;letter-spacing:1.4px;margin:3px 0 18px 40px}
-.welcome{font-size:20px;font-weight:750}.sub{color:#d1e3d9;font-size:13px;margin-top:4px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.stat{background:#285348;padding:12px;border-radius:13px}.stat b{display:block;font-size:21px}.stat span{font-size:10px;color:#d4e6dc}
-main{padding:16px;max-width:720px;margin:auto}.section{font-weight:750;font-size:17px;margin:18px 0 10px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px #142b1b08}
-.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted{color:var(--muted);font-size:12px}.btn{border:0;border-radius:12px;background:var(--green);color:white;padding:13px 16px;font-size:15px;font-weight:700;width:100%;cursor:pointer}.btn.secondary{background:#e8f1eb;color:var(--green)}.btn.small{width:auto;padding:9px 12px;font-size:13px}.pills{display:flex;gap:8px;flex-wrap:wrap}.pill{background:#edf4ef;border:1px solid #dce9df;padding:8px 11px;border-radius:99px;font-size:12px;color:#244b3b}
-.progress{height:7px;background:#e8eee9;border-radius:9px;overflow:hidden;margin:12px 0}.progress div{height:100%;background:#3d8a62;width:0}
-.option{display:block;width:100%;text-align:left;background:white;border:1px solid var(--line);padding:13px;border-radius:12px;margin:8px 0;font-size:14px;color:var(--ink)}.option.selected{border:2px solid var(--green);background:#eff7f1}.option.correct{border:2px solid #31865a;background:#eff9f2}.option.wrong{border:2px solid #c54b4b;background:#fff2f2}
-.qnum{font-size:12px;color:var(--muted);font-weight:700}.question{font-size:17px;font-weight:750;line-height:1.5;margin:10px 0 15px}.explain{background:#f1f6f2;border-radius:12px;padding:12px;font-size:13px;line-height:1.55;margin-top:12px}
-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 5px calc(9px + env(safe-area-inset-bottom));z-index:5}
-nav button{background:none;border:0;color:#64736d;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px}nav button.active{color:var(--green);font-weight:800}nav span{font-size:20px}
-.hidden{display:none!important}.badge{font-size:11px;background:#e8f2eb;color:#285348;border-radius:7px;padding:5px 8px}.result{font-size:34px;font-weight:850;color:var(--green)}.listrow{padding:12px 0;border-bottom:1px solid var(--line)}select{padding:10px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink)}
-</style></head><body>
-<header><div class="brand"><span class="mount">🏔️</span> UKPSC MASTER</div><div class="tag">PREPARE • PRACTICE • PERFORM</div><div class="welcome">Welcome, Aspirant!</div><div class="sub">Your personal Uttarakhand PCS practice space</div>
-<div class="stats"><div class="stat"><b id="streak">0</b><span>Tests completed</span></div><div class="stat"><b id="best">—</b><span>Best score</span></div><div class="stat"><b id="accuracy">—</b><span>Accuracy</span></div></div></header>
+:root{--g:#173b35;--bg:#f3f7f4;--line:#dce7df}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:#17231f;padding-bottom:75px}
+header{background:var(--g);color:white;padding:22px;border-radius:0 0 22px 22px}
+header h1{margin:0;font-size:24px}
+header p{color:#d1e3d9;font-size:13px}
+main{padding:15px;max-width:700px;margin:auto}
+.card{background:white;padding:16px;border-radius:15px;margin:12px 0;border:1px solid var(--line)}
+h2{font-size:18px}
+button{border:0;border-radius:10px;padding:12px;background:var(--g);color:white;font-weight:bold;font-size:14px;cursor:pointer}
+.subject{width:100%;text-align:left;margin:5px 0;padding:15px}
+.option{display:block;width:100%;background:white;color:#17231f;border:1px solid #dce7df;text-align:left;margin:9px 0}
+.option.selected{border:2px solid var(--g);background:#eaf4ed}
+.muted{color:#64736d;font-size:13px}
+.hidden{display:none}
+nav{position:fixed;bottom:0;background:white;width:100%;display:flex;justify-content:space-around;padding:12px 2px;border-top:1px solid var(--line)}
+nav button{background:white;color:var(--g);padding:8px;font-size:12px}
+#question{font-size:18px;line-height:1.5;font-weight:bold}
+.good{color:green}.bad{color:#b22}
+</style>
+</head>
+<body>
+<header>
+<h1>🏔️ UKPSC MASTER</h1>
+<p>PREPARE • PRACTICE • PERFORM</p>
+<h2>Welcome, Aspirant!</h2>
+<p>Upper PCS | Lower PCS | UKPSC Preparation</p>
+<div>Tests: <b id="tests">0</b> &nbsp; Best: <b id="best">—</b></div>
+</header>
 <main>
 <section id="home">
-<div class="section">Today's Practice</div>
-<div class="card"><div class="row"><b>Uttarakhand GK – Daily Test</b><span class="badge">25 MCQs</span></div><p class="muted">History • Geography • Culture • Polity • Economy • Environment</p><div class="pills"><span class="pill">Untimed practice</span><span class="pill">Explanations</span><span class="pill">Score history</span></div><br><button class="btn" onclick="startQuiz(25)">Start Daily Test</button></div>
-<div class="section">Choose Test Length</div><div class="card"><div class="row"><button class="btn secondary" onclick="startQuiz(10)">10 Questions</button><button class="btn secondary" onclick="startQuiz(25)">25 Questions</button><button class="btn secondary" onclick="startQuiz(questions.length)">Full Set</button></div><p class="muted">This starter version includes a sample question bank. New daily sets can be added as the question bank grows.</p></div>
-<div class="section">Your Progress</div><div class="card"><div class="row"><span>Saved wrong questions</span><b id="wrongCount">0</b></div><div class="row" style="margin-top:12px"><span>Tests in history</span><b id="historyCount">0</b></div></div>
+<h2>📚 Choose Your Subject</h2>
+<div class="card">
+<button class="subject" onclick="start('UK')">🏔️ Uttarakhand GK – Practice</button>
+<button class="subject" onclick="start('GS')">🇮🇳 General Studies – Practice</button>
+<button class="subject" onclick="start('HINDI')">📖 General Hindi – Practice</button>
+<button class="subject" onclick="start('CSAT')">🧮 CSAT – Maths & Reasoning</button>
+<button class="subject" onclick="start('PYQ')">📝 PYQ Practice</button>
+</div>
+<div class="card">
+<h2>📊 Your Progress</h2>
+<p>Wrong Questions: <b id="wrongCount">0</b></p>
+<p>Tests Completed: <b id="historyCount">0</b></p>
+</div>
+<div class="card">
+<h2>📅 Daily Practice</h2>
+<p class="muted">हर विषय के प्रश्न बैंक को नियमित रूप से अपडेट किया जाएगा। नए प्रश्न तभी उपलब्ध होंगे जब नया प्रश्न बैंक प्रकाशित होगा।</p>
+</div>
 </section>
+
 <section id="quiz" class="hidden">
-<div class="row"><button class="btn secondary small" onclick="goHome()">← Exit</button><span class="muted" id="qprogress">Question 1</span></div><div class="progress"><div id="bar"></div></div>
-<div class="card"><div class="qnum" id="qcat"></div><div class="question" id="qtext"></div><div id="opts"></div><div id="feedback"></div></div>
-<div class="row"><button class="btn secondary" id="prev" onclick="move(-1)">Previous</button><button class="btn" id="next" onclick="move(1)">Next</button></div>
+<div class="card">
+<button onclick="home()">← Back</button>
+<p id="category" class="muted"></p>
+<p id="number"></p>
+<div id="question"></div>
+<div id="options"></div>
+<p id="feedback"></p>
+<button onclick="next()" id="next">Next</button>
+</div>
 </section>
-<section id="result" class="hidden"><div class="card" style="text-align:center"><div class="muted">TEST COMPLETED</div><div class="result" id="finalScore">0/25</div><div id="resultText" style="font-weight:700"></div><p class="muted" id="resultMeta"></p><button class="btn" onclick="reviewWrong()">Review Wrong Questions</button><br><br><button class="btn secondary" onclick="goHome()">Back to Dashboard</button></div><div class="section">Answer Review</div><div id="review"></div></section>
-<section id="wrong" class="hidden"><div class="section">Wrong Questions Notebook</div><div id="wrongList" class="card"></div><button class="btn secondary" onclick="goHome()">Back to Dashboard</button></section>
-<section id="history" class="hidden"><div class="section">Test History</div><div id="historyList" class="card"></div><button class="btn secondary" onclick="clearHistory()">Clear History</button></section>
-<section id="about" class="hidden"><div class="section">About UKPSC MASTER</div><div class="card"><b>Version 1.0 – Starter</b><p class="muted">A personal, login-free practice app. Your test history and wrong-answer list are stored on this device/browser.</p><p class="muted">Question bank is a starter set, not an official UKPSC paper. Verify changing facts with official government sources and the latest notification.</p><button class="btn secondary" onclick="alert('In Safari, use Share → Add to Home Screen. For installable PWA behavior, this folder must first be hosted on an HTTPS website.')">How to install</button></div></section>
+
+<section id="result" class="hidden">
+<div class="card">
+<h2>Test Completed!</h2>
+<h1 id="score"></h1>
+<p id="message"></p>
+<button onclick="home()">Dashboard</button>
+</div>
+</section>
+
+<section id="wrong" class="hidden">
+<h2>Wrong Answer Notebook</h2>
+<div id="wrongItems" class="card"></div>
+</section>
+
+<section id="history" class="hidden">
+<h2>Test History</h2>
+<div id="historyItems" class="card"></div>
+</section>
 </main>
-<nav><button class="active" data-tab="home" onclick="tab('home',this)"><span>⌂</span>Home</button><button data-tab="wrong" onclick="tab('wrong',this)"><span>✎</span>Wrong Qs</button><button data-tab="history" onclick="tab('history',this)"><span>▤</span>History</button><button data-tab="about" onclick="tab('about',this)"><span>ⓘ</span>About</button></nav>
+
+<nav>
+<button onclick="home()">⌂ Home</button>
+<button onclick="show('wrong')">✎ Wrong Qs</button>
+<button onclick="show('history')">▤ History</button>
+</nav>
+
 <script>
-const questions = [{"c": "इतिहास", "q": "उत्तराखंड राज्य का गठन कब हुआ?", "o": ["9 नवंबर 2000", "1 नवंबर 2000", "15 अगस्त 2000", "26 जनवरी 2001"], "a": 0, "e": "उत्तराखंड का गठन 9 नवंबर 2000 को उत्तर प्रदेश से अलग होकर हुआ। प्रारंभ में राज्य का नाम उत्तरांचल था; 2007 में इसका नाम उत्तराखंड किया गया।"}, {"c": "इतिहास", "q": "उत्तराखंड राज्य गठन के समय राज्य का नाम क्या था?", "o": ["उत्तराखंड", "उत्तरांचल", "केदारखंड", "कुमाऊँ"], "a": 1, "e": "9 नवंबर 2000 को राज्य का गठन उत्तरांचल नाम से हुआ था। 1 जनवरी 2007 से इसका नाम उत्तराखंड हुआ।"}, {"c": "भूगोल", "q": "उत्तराखंड की सबसे ऊँची चोटी कौन-सी है?", "o": ["त्रिशूल", "नंदा देवी", "कामेट", "चौखम्बा"], "a": 1, "e": "नंदा देवी की ऊँचाई 7,816 मीटर है और यह पूरी तरह भारत में स्थित सर्वोच्च पर्वत चोटी है।"}, {"c": "भूगोल", "q": "कर्णप्रयाग में किन नदियों का संगम होता है?", "o": ["भागीरथी और अलकनंदा", "पिंडर और अलकनंदा", "मंदाकिनी और अलकनंदा", "धौलीगंगा और अलकनंदा"], "a": 1, "e": "कर्णप्रयाग में पिंडर नदी अलकनंदा से मिलती है।"}, {"c": "भूगोल", "q": "फूलों की घाटी राष्ट्रीय उद्यान किस जिले में स्थित है?", "o": ["उत्तरकाशी", "चमोली", "पिथौरागढ़", "रुद्रप्रयाग"], "a": 1, "e": "फूलों की घाटी राष्ट्रीय उद्यान चमोली जिले में स्थित है। यह नंदा देवी राष्ट्रीय उद्यान के साथ UNESCO विश्व धरोहर स्थल का हिस्सा है।"}, {"c": "इतिहास", "q": "टिहरी रियासत का भारत में विलय किस वर्ष हुआ?", "o": ["1947", "1948", "1949", "1950"], "a": 2, "e": "टिहरी रियासत का भारत में विलय 1 अगस्त 1949 को हुआ।"}, {"c": "इतिहास", "q": "रेणी गाँव में गौरा देवी के नेतृत्व में प्रसिद्ध चिपको घटना किस वर्ष हुई?", "o": ["1971", "1973", "1974", "1976"], "a": 2, "e": "रेणी गाँव की प्रसिद्ध घटना 1974 में हुई। चिपको आंदोलन का प्रारंभिक चरण 1973 में मंडल क्षेत्र से जुड़ा है।"}, {"c": "संस्कृति", "q": "हिलजात्रा लोकपर्व मुख्यतः उत्तराखंड के किस क्षेत्र से संबंधित है?", "o": ["पिथौरागढ़", "हरिद्वार", "टिहरी", "देहरादून"], "a": 0, "e": "हिलजात्रा पिथौरागढ़ क्षेत्र का प्रसिद्ध लोकपर्व है और कृषि-पशुपालन तथा लोकपरंपराओं से जुड़ा है।"}, {"c": "इतिहास", "q": "चंद वंश की प्रारंभिक राजधानी किस स्थान को माना जाता है?", "o": ["अल्मोड़ा", "चंपावत", "नैनीताल", "द्वाराहाट"], "a": 1, "e": "चंपावत चंद शासकों की प्रारंभिक राजधानी थी। बाद में राजधानी अल्मोड़ा स्थानांतरित हुई।"}, {"c": "भूगोल", "q": "उत्तराखंड का क्षेत्रफल की दृष्टि से सबसे बड़ा जिला कौन-सा है?", "o": ["पौड़ी गढ़वाल", "उत्तरकाशी", "चमोली", "पिथौरागढ़"], "a": 2, "e": "चमोली उत्तराखंड का क्षेत्रफल की दृष्टि से सबसे बड़ा जिला है।"}, {"c": "राजव्यवस्था", "q": "उत्तराखंड उच्च न्यायालय कहाँ स्थित है?", "o": ["देहरादून", "हरिद्वार", "नैनीताल", "अल्मोड़ा"], "a": 2, "e": "उत्तराखंड उच्च न्यायालय नैनीताल में स्थित है।"}, {"c": "राजव्यवस्था", "q": "उत्तराखंड की ग्रीष्मकालीन राजधानी कौन-सी है?", "o": ["गैरसैंण (भराड़ीसैंण)", "नैनीताल", "अल्मोड़ा", "उत्तरकाशी"], "a": 0, "e": "गैरसैंण के भराड़ीसैंण को उत्तराखंड की ग्रीष्मकालीन राजधानी घोषित किया गया।"}, {"c": "भूगोल", "q": "जिम कॉर्बेट राष्ट्रीय उद्यान की स्थापना किस वर्ष हुई थी?", "o": ["1936", "1956", "1973", "1982"], "a": 0, "e": "हैली नेशनल पार्क की स्थापना 1936 में हुई थी। बाद में इसका नाम जिम कॉर्बेट राष्ट्रीय उद्यान रखा गया।"}, {"c": "भूगोल", "q": "टिहरी बाँध किस नदी पर बना है?", "o": ["अलकनंदा", "भागीरथी", "यमुना", "रामगंगा"], "a": 1, "e": "टिहरी बाँध भागीरथी नदी पर स्थित है।"}, {"c": "भूगोल", "q": "उत्तराखंड की प्रमुख दो मंडल-व्यवस्थाएँ कौन-सी हैं?", "o": ["गढ़वाल और कुमाऊँ", "तराई और भाबर", "शिवालिक और हिमाद्रि", "मध्य हिमालय और ट्रांस हिमालय"], "a": 0, "e": "उत्तराखंड के दो प्रशासनिक मंडल गढ़वाल और कुमाऊँ हैं।"}, {"c": "संस्कृति", "q": "जागर परंपरा मुख्यतः किससे संबंधित है?", "o": ["लोकदेवताओं के आवाहन/अनुष्ठान से", "केवल फसल कटाई से", "बौद्ध चित्रकला से", "धातु शिल्प से"], "a": 0, "e": "जागर उत्तराखंड की पारंपरिक अनुष्ठानिक लोकपरंपरा है, जिसमें लोकदेवताओं और स्थानीय देवशक्तियों का आवाहन किया जाता है।"}, {"c": "अर्थव्यवस्था", "q": "उत्तराखंड की अर्थव्यवस्था में किस क्षेत्र का विशेष महत्व है?", "o": ["पर्यटन", "समुद्री मत्स्य पालन", "रेगिस्तानी कृषि", "जहाज निर्माण"], "a": 0, "e": "हिमालयी पर्यटन, तीर्थाटन और प्रकृति-आधारित पर्यटन राज्य की अर्थव्यवस्था में महत्वपूर्ण भूमिका निभाते हैं।"}, {"c": "पर्यावरण", "q": "नंदा देवी जैवमंडल आरक्षित क्षेत्र मुख्यतः किस राज्य में स्थित है?", "o": ["हिमाचल प्रदेश", "उत्तराखंड", "सिक्किम", "अरुणाचल प्रदेश"], "a": 1, "e": "नंदा देवी जैवमंडल आरक्षित क्षेत्र उत्तराखंड में स्थित है।"}, {"c": "भूगोल", "q": "किस प्रयाग में अलकनंदा और मंदाकिनी नदियों का संगम होता है?", "o": ["विष्णुप्रयाग", "नंदप्रयाग", "रुद्रप्रयाग", "देवप्रयाग"], "a": 2, "e": "रुद्रप्रयाग में मंदाकिनी नदी अलकनंदा से मिलती है।"}, {"c": "भूगोल", "q": "देवप्रयाग में किन नदियों के संगम के बाद नदी को गंगा कहा जाता है?", "o": ["यमुना और टोंस", "भागीरथी और अलकनंदा", "पिंडर और अलकनंदा", "मंदाकिनी और भागीरथी"], "a": 1, "e": "देवप्रयाग में भागीरथी और अलकनंदा के संगम के बाद नदी को गंगा कहा जाता है।"}, {"c": "संस्कृति", "q": "कुमाऊँनी होली की एक प्रमुख विशेषता क्या है?", "o": ["शास्त्रीय/राग-आधारित गायन परंपरा", "केवल मुखौटा नृत्य", "नौका दौड़", "रेगिस्तानी लोकगीत"], "a": 0, "e": "कुमाऊँ की बैठकी और खड़ी होली में शास्त्रीय रागों पर आधारित गायन की विशिष्ट परंपरा मिलती है।"}, {"c": "राजव्यवस्था", "q": "उत्तराखंड में पंचायती राज की त्रिस्तरीय व्यवस्था में कौन-से स्तर शामिल हैं?", "o": ["ग्राम, क्षेत्र/खंड, जिला", "ग्राम, तहसील, मंडल", "वार्ड, नगर, जिला", "ग्राम, राज्य, केंद्र"], "a": 0, "e": "त्रिस्तरीय पंचायती राज व्यवस्था में ग्राम पंचायत, क्षेत्र पंचायत और जिला पंचायत शामिल हैं।"}, {"c": "पर्यावरण", "q": "राजाजी राष्ट्रीय उद्यान मुख्यतः उत्तराखंड के किस भौगोलिक क्षेत्र में फैला है?", "o": ["तराई-शिवालिक क्षेत्र", "उच्च हिमालयी हिमनद क्षेत्र", "शुष्क मरुस्थलीय क्षेत्र", "ट्रांस-हिमालय"], "a": 0, "e": "राजाजी राष्ट्रीय उद्यान शिवालिक पर्वतमाला और उससे जुड़े तराई क्षेत्र में फैला है।"}, {"c": "अर्थव्यवस्था", "q": "उत्तराखंड में 'बुग्याल' शब्द का अर्थ क्या है?", "o": ["ऊँचाई पर स्थित प्राकृतिक घास के मैदान", "नदी का डेल्टा", "शुष्क घाटी", "चाय का बागान"], "a": 0, "e": "बुग्याल हिमालयी क्षेत्र के ऊँचाई पर स्थित प्राकृतिक अल्पाइन घास के मैदान होते हैं।"}, {"c": "समसामयिकी", "q": "किसी राज्य की नवीनतम सरकारी योजना/बजट संबंधी तथ्य की तैयारी के लिए सबसे विश्वसनीय प्राथमिक स्रोत क्या है?", "o": ["अनाम सोशल मीडिया पोस्ट", "राज्य सरकार का आधिकारिक पोर्टल/बजट दस्तावेज", "पुराना कोचिंग नोट", "बिना स्रोत का वीडियो"], "a": 1, "e": "समसामयिकी और सरकारी योजनाओं के लिए राज्य सरकार के आधिकारिक पोर्टल, शासनादेश और बजट दस्तावेज प्राथमिक स्रोत होने चाहिए।"}];
-let current=[],idx=0,answers={},lastScore=0;
+const bank=[
+{c:"UK",q:"उत्तराखंड राज्य का गठन कब हुआ?",o:["9 नवंबर 2000","1 नवंबर 2000","15 अगस्त 2000","26 जनवरी 2001"],a:0,e:"उत्तराखंड राज्य का गठन 9 नवंबर 2000 को हुआ।"},
+{c:"UK",q:"उत्तराखंड की सबसे ऊँची चोटी कौन सी है?",o:["त्रिशूल","नंदा देवी","कामेट","चौखम्बा"],a:1,e:"नंदा देवी की ऊँचाई 7816 मीटर है।"},
+{c:"UK",q:"कर्णप्रयाग में किन नदियों का संगम होता है?",o:["भागीरथी-अलकनंदा","पिंडर-अलकनंदा","मंदाकिनी-अलकनंदा","यमुना-टोंस"],a:1,e:"कर्णप्रयाग में पिंडर और अलकनंदा मिलती हैं।"},
+{c:"UK",q:"फूलों की घाटी किस जिले में है?",o:["उत्तरकाशी","चमोली","पिथौरागढ़","रुद्रप्रयाग"],a:1,e:"फूलों की घाटी चमोली जिले में स्थित है।"},
+{c:"UK",q:"टिहरी बाँध किस नदी पर बना है?",o:["अलकनंदा","भागीरथी","यमुना","रामगंगा"],a:1,e:"टिहरी बाँध भागीरथी नदी पर है।"},
+{c:"GS",q:"भारतीय संविधान कब लागू हुआ?",o:["15 अगस्त 1947","26 जनवरी 1950","26 नवंबर 1949","2 अक्टूबर 1950"],a:1,e:"संविधान 26 जनवरी 1950 को लागू हुआ।"},
+{c:"GS",q:"मौलिक कर्तव्य किस संशोधन से जोड़े गए?",o:["42वाँ","44वाँ","52वाँ","73वाँ"],a:0,e:"42वें संविधान संशोधन, 1976 से मौलिक कर्तव्य जोड़े गए।"},
+{c:"GS",q:"भारत का केंद्रीय बैंक कौन है?",o:["SBI","RBI","NABARD","SEBI"],a:1,e:"भारतीय रिजर्व बैंक भारत का केंद्रीय बैंक है।"},
+{c:"GS",q:"पृथ्वी के वायुमंडल में सर्वाधिक गैस कौन सी है?",o:["ऑक्सीजन","नाइट्रोजन","कार्बन डाइऑक्साइड","हाइड्रोजन"],a:1,e:"वायुमंडल में लगभग 78% नाइट्रोजन है।"},
+{c:"GS",q:"प्लासी का युद्ध कब हुआ?",o:["1757","1764","1857","1773"],a:0,e:"प्लासी का युद्ध 1757 में हुआ।"},
+{c:"HINDI",q:"'सूर्य' का पर्यायवाची शब्द कौन सा है?",o:["रवि","निशा","पवन","जल"],a:0,e:"रवि सूर्य का पर्यायवाची है।"},
+{c:"HINDI",q:"'अंधकार' का विलोम क्या है?",o:["तम","प्रकाश","रात्रि","छाया"],a:1,e:"अंधकार का विलोम प्रकाश है।"},
+{c:"HINDI",q:"'विद्यालय' में कौन सी संधि है?",o:["गुण","वृद्धि","दीर्घ","यण"],a:2,e:"विद्या + आलय में दीर्घ स्वर संधि है।"},
+{c:"HINDI",q:"'जो कभी न मरे' के लिए एक शब्द है?",o:["अजर","अमर","अटल","अविरल"],a:1,e:"जो कभी न मरे उसे अमर कहते हैं।"},
+{c:"HINDI",q:"'नाक कटना' मुहावरे का अर्थ है?",o:["घायल होना","अपमान होना","बीमार होना","क्रोधित होना"],a:1,e:"नाक कटना का अर्थ अपमान होना है।"},
+{c:"CSAT",q:"200 का 25% कितना है?",o:["25","40","50","75"],a:2,e:"200 × 25/100 = 50"},
+{c:"CSAT",q:"श्रृंखला पूरी करें: 2, 4, 8, 16, ?",o:["20","24","30","32"],a:3,e:"प्रत्येक संख्या दोगुनी हो रही है।"},
+{c:"CSAT",q:"यदि 5 व्यक्ति काम 10 दिन में करें, तो 10 व्यक्ति कितने दिन लेंगे?",o:["2","5","10","20"],a:1,e:"व्यक्ति दोगुने होने पर समय आधा होगा।"},
+{c:"CSAT",q:"एक वस्तु ₹100 की है। 10% छूट के बाद कीमत?",o:["80","85","90","95"],a:2,e:"100 का 10% = 10, अतः कीमत ₹90।"},
+{c:"CSAT",q:"3, 6, 9, 12, अगली संख्या?",o:["13","14","15","18"],a:2,e:"प्रत्येक बार 3 जोड़ा जा रहा है।"},
+{c:"PYQ",q:"भारत छोड़ो आंदोलन किस वर्ष प्रारंभ हुआ?",o:["1930","1942","1946","1919"],a:1,e:"भारत छोड़ो आंदोलन अगस्त 1942 में प्रारंभ हुआ।"},
+{c:"PYQ",q:"संविधान सभा के अध्यक्ष कौन थे?",o:["डॉ. राजेंद्र प्रसाद","नेहरू","अंबेडकर","पटेल"],a:0,e:"डॉ. राजेंद्र प्रसाद संविधान सभा के अध्यक्ष थे।"},
+{c:"PYQ",q:"भारत में योजना आयोग की स्थापना कब हुई?",o:["1947","1950","1951","1952"],a:1,e:"योजना आयोग की स्थापना 1950 में हुई।"},
+{c:"PYQ",q:"चिपको आंदोलन से जुड़ी प्रमुख महिला कौन थीं?",o:["सरोजिनी नायडू","गौरा देवी","कमला नेहरू","लक्ष्मी सहगल"],a:1,e:"गौरा देवी ने रेणी गांव में चिपको आंदोलन का नेतृत्व किया।"},
+{c:"PYQ",q:"लोकसभा का सामान्य कार्यकाल कितने वर्ष है?",o:["4","5","6","7"],a:1,e:"लोकसभा का सामान्य कार्यकाल 5 वर्ष है।"}
+];
+
+let list=[],i=0,chosen={},subject="";
 const $=id=>document.getElementById(id);
-function get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}}
-function put(k,v){localStorage.setItem(k,JSON.stringify(v))}
-function updateStats(){let h=get('history',[]),w=get('wrong',[]);$('streak').textContent=h.length;$('best').textContent=h.length?Math.max(...h.map(x=>x.score))+'/'+Math.max(...h.map(x=>x.total)):'—';let total=h.reduce((a,x)=>a+x.total,0),correct=h.reduce((a,x)=>a+x.score,0);$('accuracy').textContent=total?Math.round(correct/total*100)+'%':'—';$('wrongCount').textContent=w.length;$('historyCount').textContent=h.length}
-function tab(name,el){['home','quiz','result','wrong','history','about'].forEach(x=>$(x).classList.add('hidden'));$(name).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(el)el.classList.add('active');if(name==='wrong')renderWrong();if(name==='history')renderHistory()}
-function goHome(){tab('home',document.querySelector('[data-tab=home]'));updateStats()}
-function startQuiz(n){current=questions.slice(0,Math.min(n,questions.length));idx=0;answers={};tab('quiz');renderQ()}
-function renderQ(){let q=current[idx];$('qprogress').textContent=`Question ${idx+1} of ${current.length}`;$('bar').style.width=((idx+1)/current.length*100)+'%';$('qcat').textContent=q.c.toUpperCase();$('qtext').textContent=q.q;$('opts').innerHTML='';$('feedback').innerHTML='';q.o.forEach((o,j)=>{let b=document.createElement('button');b.className='option'+(answers[idx]===j?' selected':'');b.textContent=String.fromCharCode(65+j)+'. '+o;b.onclick=()=>{answers[idx]=j;renderQ()};$('opts').appendChild(b)});$('prev').disabled=idx===0;$('next').textContent=idx===current.length-1?'Submit Test':'Next';}
-function move(d){if(d===1&&idx===current.length-1){finish();return}idx=Math.max(0,Math.min(current.length-1,idx+d));renderQ()}
-function finish(){let score=current.reduce((s,q,i)=>s+(answers[i]===q.a?1:0),0);lastScore=score;let wrong=get('wrong',[]);current.forEach((q,i)=>{if(answers[i]!==q.a&&!wrong.some(x=>x.q===q.q))wrong.push(q)});put('wrong',wrong);let h=get('history',[]);h.unshift({date:new Date().toLocaleDateString('en-IN'),score,total:current.length});put('history',h.slice(0,100));$('finalScore').textContent=score+'/'+current.length;$('resultText').textContent=score>=Math.ceil(current.length*.8)?'Excellent work!':score>=Math.ceil(current.length*.6)?'Good effort – revise weak areas.':'Keep practising – review explanations.';$('resultMeta').textContent=`Attempted ${Object.keys(answers).length}/${current.length} • ${Math.round(score/current.length*100)}% accuracy`;$('review').innerHTML='';current.forEach((q,i)=>{let d=document.createElement('div');d.className='card';d.innerHTML=`<b>Q${i+1}. ${q.q}</b><p style="color:${answers[i]===q.a?'#26734b':'#a93636'}">Your answer: ${answers[i]===undefined?'Not attempted':q.o[answers[i]]}</p><p><b>Correct:</b> ${q.o[q.a]}</p><div class="explain">${q.e}</div>`;$('review').appendChild(d)});tab('result');updateStats()}
-function reviewWrong(){tab('wrong',document.querySelector('[data-tab=wrong]'))}
-function renderWrong(){let w=get('wrong',[]);$('wrongList').innerHTML=w.length?'': 'No wrong questions saved yet.';w.forEach((q,i)=>{let d=document.createElement('div');d.className='listrow';d.innerHTML=`<b>${i+1}. ${q.q}</b><p class="muted">Correct answer: ${q.o[q.a]}</p><div class="muted">${q.e}</div>`;$('wrongList').appendChild(d)})}
-function renderHistory(){let h=get('history',[]);$('historyList').innerHTML=h.length?'':'No tests completed yet.';h.forEach(x=>{let d=document.createElement('div');d.className='listrow';d.innerHTML=`<div class="row"><span>${x.date}</span><b>${x.score}/${x.total}</b></div>`;$('historyList').appendChild(d)})}
-function clearHistory(){if(confirm('Clear all test history?')){put('history',[]);updateStats();renderHistory()}}
-updateStats();
-if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
-</script></body></html>
+function read(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return []}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function show(id){["home","quiz","result","wrong","history"].forEach(x=>$(x).classList.add("hidden"));$(id).classList.remove("hidden");if(id==="wrong")renderWrong();if(id==="history")renderHistory()}
+function home(){show("home");stats()}
+function start(s){subject=s;list=bank.filter(q=>q.c===s);if(!list.length){alert("इस विषय के प्रश्न जल्द जोड़े जाएंगे।");return}i=0;chosen={};show("quiz");render()}
+function render(){
+let q=list[i];$("category").textContent=subject+" PRACTICE";
+$("number").textContent="Question "+(i+1)+" / "+list.length;
+$("question").textContent=q.q;$("feedback").textContent="";
+$("options").innerHTML="";
+q.o.forEach((x,j)=>{let b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+j)+". "+x;if(chosen[i]===j)b.classList.add("selected");b.onclick=()=>{chosen[i]=j;render()};$("options").appendChild(b)});
+$("next").textContent=i===list.length-1?"Submit Test":"Next";
+}
+function next(){if(i<list.length-1){i++;render()}else finish()}
+function finish(){
+let score=list.filter((q,j)=>chosen[j]===q.a).length;
+let w=read("wrong");list.forEach((q,j)=>{if(chosen[j]!==q.a&&!w.some(x=>x.q===q.q))w.push(q)});save("wrong",w);
+let h=read("history");h.unshift({date:new Date().toLocaleDateString("en-IN"),score,total:list.length,subject});save("history",h);
+$("score").textContent=score+"/"+list.length;
+$("message").textContent="सही उत्तर: "+score+" | Accuracy: "+Math.round(score/list.length*100)+"%";
+show("result");stats();
+}
+function renderWrong(){$("wrongItems").innerHTML="";let w=read("wrong");if(!w.length)$("wrongItems").textContent="अभी कोई गलत प्रश्न नहीं है।";w.forEach(q=>{let d=document.createElement("p");d.innerHTML="<b>"+q.q+"</b><br>सही उत्तर: "+q.o[q.a]+"<br>"+q.e;$("wrongItems").appendChild(d)})}
+function renderHistory(){$("historyItems").innerHTML="";let h=read("history");if(!h.length)$("historyItems").textContent="अभी कोई टेस्ट नहीं हुआ।";h.forEach(x=>{let d=document.createElement("p");d.textContent=x.date+" | "+x.subject+" | "+x.score+"/"+x.total;$("historyItems").appendChild(d)})}
+function stats(){let h=read("history");$("tests").textContent=h.length;$("historyCount").textContent=h.length;$("wrongCount").textContent=read("wrong").length;$("best").textContent=h.length?Math.max(...h.map(x=>x.score)):"—"}
+stats();
+</script>
+</body>
+</html>
